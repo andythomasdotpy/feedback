@@ -7,10 +7,14 @@
     <title>Your Review</title>
 </head>
 <body>
-    <form method="POST">
+    <form action="/" method="POST">
         {% csrf_token %}
-        <text for="username">Your Name<text>
-        <input id="username" name="username_1"type="text">
+        <!-- {% if has_error %}
+            <h1>Entry is too short. Please make sure entry contains at least 8 characters!</h1>
+        {% endif %} -->
+        <!-- <text for="username">Your Name<text>
+        <input id="username" name="username_1" type="text"> -->
+        {{ form }}
         <button type="submit">Send</button>
     </form>
 </body>
