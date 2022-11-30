@@ -1,21 +1,23 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reviews/styles.css' %}">
     <title>Your Review</title>
 </head>
 <body>
     <form action="/" method="POST">
-        {% csrf_token %}
-        <!-- {% if has_error %}
-            <h1>Entry is too short. Please make sure entry contains at least 8 characters!</h1>
-        {% endif %} -->
-        <!-- <text for="username">Your Name<text>
-        <input id="username" name="username_1" type="text"> -->
-        {{ form }}
+        <div class="form-control {% if form.user_name.errors %} errors {% endif %}">
+            {% csrf_token %}
+            {{ form.user_name.label_tag }}
+            {{ form.user_name }}
+            {{ form.user_name.errors }}
         <button type="submit">Send</button>
+    </div>
     </form>
 </body>
 </html>

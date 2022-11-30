@@ -6,18 +6,15 @@ from .forms import ReviewForm
 # Create your views here.
 
 def reviews(request):
-    # if request.method == "POST":
-    #     usernamesss = request.POST["username_1"]
-    #     print(usernamesss)
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
 
-    #     if len(usernamesss) < 8:
-    #         return render(request, "reviews/review.html", {
-    #             "has_error": True 
-    #         })
+        if form.is_valid():  # is_valid will do 3 things.. 1) validiate the inputs (by default verifies not empty) 2) then will return True if valid 3) if data is valid it populates another field with valide data
+            print(form.cleaned_data['user_name'])
+            return HttpResponseRedirect("/thank-you")
 
-    #     return HttpResponseRedirect("/thank-you")
-
-    form = ReviewForm()
+    else:
+        form = ReviewForm()
 
     return render(request, "reviews/review.html", {
         "form": form
