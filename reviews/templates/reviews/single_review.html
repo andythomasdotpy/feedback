@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content%}
-    <h1> User Name: {{ review.user }}</h1>
+     <h1> User Name: {{ review.user }}</h1>  
     <p> Rating: {{ review.rating }} </p>
-    <p> {{  review.review }} </p>
+    <p> {{  object.review }} </p>
 {% endblock %}
+
+
+{% comment %}by default django uses model name "Review" (from view.py) lowercased to access "review". object also works {% endcomment %}
